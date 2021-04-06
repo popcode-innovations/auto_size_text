@@ -11,6 +11,7 @@ class AnimatedButton extends StatefulWidget {
   final Widget child;
   final bool enabled;
   final Color color;
+  final Color disabledColor;
   final double height;
   final double width;
   final ShadowDegree shadowDegree;
@@ -23,6 +24,7 @@ class AnimatedButton extends StatefulWidget {
         required this.child,
         this.enabled = true,
         this.color = Colors.blue,
+        this.disabledColor = Colors.grey,
         this.height = 64,
         this.shadowDegree = ShadowDegree.light,
         this.width = 200,
@@ -61,7 +63,7 @@ class _AnimatedButtonState extends State<AnimatedButton> {
                 decoration: BoxDecoration(
                     color: widget.enabled
                         ? darken(widget.color, widget.shadowDegree)
-                        : darken(Colors.grey, widget.shadowDegree),
+                        : darken(widget.disabledColor, widget.shadowDegree),
                     borderRadius: widget.shape != BoxShape.circle
                         ? BorderRadius.all(
                       Radius.circular(16),
@@ -78,7 +80,7 @@ class _AnimatedButtonState extends State<AnimatedButton> {
                 height: _height,
                 width: widget.width,
                 decoration: BoxDecoration(
-                    color: widget.enabled ? widget.color : Colors.grey,
+                    color: widget.enabled ? widget.color : widget.disabledColor,
                     borderRadius: widget.shape != BoxShape.circle
                         ? BorderRadius.all(
                       Radius.circular(16),
